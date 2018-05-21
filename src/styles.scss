@@ -1,1 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files 
+
+deeppurple-amber.css
+indigo-pink.css
+pink-bluegrey.css
+purple-green.css
+*/
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.float-right{
+    float: right;
+}
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.4s ease-in-out;
+    mat-spinner{
+        z-index: 10;
+    }
+  }
+.login-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #3f51b5;
+}
+body{
+    background-color: #0D83DD;
+  }
+  @-webkit-keyframes autofill {
+    to {
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+.container{
+    width: 1170px;
+    margin: 0 auto;
+}
+h1,h2{
+    color: #fff;
+    padding: 15px;
+    font-family: 'Roboto'; 
+}
+table{
+    margin-top: 30px;
+    width: 100%;
+    background: #fff;
+    font-family: 'Roboto';
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+    tr{
+        display: flex;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(0,0,0,.12);
+        align-items: center;
+        padding: 0 24px;
+        box-sizing: border-box;
+        min-height: 56px;
+        
+        td,th{
+            flex: 1;
+            overflow: hidden;
+            word-wrap: break-word;
+            text-align: left;
+        }
+    }
+    tr:last-child{
+        border-bottom-width: 1px;
+        border-bottom-style: none;
+    }
+}

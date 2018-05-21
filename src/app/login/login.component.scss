@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  mat-card {
+    // background: lightblue;
+    width: 400px;
+  }
+  .login-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #0D83DD;
+  }
+
+
+nav{
+    a.active{
+        color: #039be5;
+    }
+}
+
+.btn-register{
+    background-color: rgb(56, 206, 81);;
+    color: #fff;
+    margin-top: 20px;
+}

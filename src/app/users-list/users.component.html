@@ -1,0 +1,79 @@
+
+<div class="container">
+
+  <h1>Angular Search system</h1>
+  <mat-divider></mat-divider>
+    <mat-accordion *ngIf="admin">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            New User
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form (ngSubmit)="addUser(userData.value)" [formGroup]="userData" >
+
+          <mat-form-field>
+            <input input matInput placeholder="Name" formControlName="name" name="name" id="name" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email" name="email" id="email" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Profile" name="profile" formControlName="profile" required>
+              <mat-option *ngFor="let profile of profiles" [value]="profile.id">
+                {{ profile.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button type="submit" class="float-right" mat-raised-button color="primary" [disabled]="!userData.valid">Add User</button>
+        </form>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false">
+      </mat-expansion-panel>
+    </mat-accordion>
+  <mat-divider></mat-divider>
+
+  
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="profile">
+        <mat-header-cell *matHeaderCellDef> Profile </mat-header-cell>
+        <mat-cell *matCellDef="let user"> <span *ngFor="let profile of user.profile" id="{{profile.id}}"> {{profile.type}}</span> </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="detail">
+        <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+        <mat-cell *matCellDef="let user"> <button mat-raised-button color="primary" [routerLink]="['detail', user.id ]" (click)="userClicked(user)">Detail</button> </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="loading" *ngIf="showLoading">
+        <mat-spinner></mat-spinner>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
